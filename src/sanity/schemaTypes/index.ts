@@ -1,6 +1,6 @@
 import { type SchemaTypeDefinition } from 'sanity'
-import homePage from './nextjs'
+import post from './post'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [homePage],
+  types: [post],
 }
