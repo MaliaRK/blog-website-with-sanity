@@ -3,6 +3,7 @@ import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image'
 import BlogCard from '../components/blogCard'
 import React from 'react'
+import Link from 'next/link';
 
 interface Post {
   image: any;
@@ -51,9 +52,9 @@ const Home = async () => {
               return (
                 <BlogCard key={post.slug}
                   image = {<Image src={urlFor(post.image).url()} alt={post.title} width={100} height={40} className='w-full'/>}
-                  title = {post.title}
+                  title= {post.title}
                   summary = {post.summary}
-                  slug = {post.slug}
+                  link = {<Link href={`blog/${post.slug}`}>read more</Link>}
                 />
               )
             })
