@@ -3,10 +3,7 @@ import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image'
 import BlogCard from '../components/blogCard'
 import Link from 'next/link'
-// import { Sheet, SheetTrigger, SheetContent } from '@/components/ui/sheet'
 
-
-// Define Blog interface
 interface Blog {
     image: any;
     title: string;
@@ -14,9 +11,7 @@ interface Blog {
     slug: string;
 }
 
-// Home component as a Server Component
 const Home = async () => {
-    // Query to fetch blogs from Sanity
     const query = `
     *[_type == "post"] | order(_createdAt asc)[0..2] {
         image,
@@ -25,20 +20,17 @@ const Home = async () => {
         "slug": slug.current
     }`;
 
-    // Fetch blogs from Sanity
     const blogs: Blog[] = await client.fetch(query);
 
     return (
         <div>
-            <h1 className='text-center text-2xl text-[#6EEB83]'><strong><u>Welcome To My Blog</u></strong></h1>
-            <p className='mt-8 md:mt-14'>In this space, I&apos;ll be discussing a variety of IT-related topics, where we can
+            <p className='mt-[80px] md:mt-[100px]'>In this space, I&apos;ll be discussing a variety of IT-related topics, where we can
                 interact with individuals and groups alike. The blog will focus on sharing
                 knowledge-based content, including the latest updates in technology. My goal is to
                 keep us connected in the ever-evolving tech world and create a community
                 where we can learn from each other.</p>
-            <h3 className='text-xl text-center mt-10 text-[#6EEB83]'><u>*--- Most Recent Posts ---*</u></h3>
-           {/* mjhe yaha aos zoom in use krna h */}
-            <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8'>
+            <h3 className='text-xl text-center mt-10'><u>*--- Most Recent Posts ---*</u></h3>
+            <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-10 mt-8'>
                 {
                     blogs.map((blog) => {
                         return (

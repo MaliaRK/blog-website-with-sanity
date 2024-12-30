@@ -13,7 +13,6 @@ export const components: PortableTextComponents = {
     },
     types: {
       image: ({ value }: { value: any }) => {
-        // Sanity ke image URL ko urlFor ke through pass karo
         return (
           <div className="my-image-container">
             <Image

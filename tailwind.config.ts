@@ -30,11 +30,11 @@ const config: Config = {
   				foreground: 'hsl(var(--popover-foreground))'
   			},
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
+  				DEFAULT: 'hsl(260, 100%, 80%)',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
+  				DEFAULT: 'hsl(261, 76.80%, 72.90%)',
   				foreground: 'hsl(var(--secondary-foreground))'
   			},
   			muted: {

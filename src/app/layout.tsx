@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import SheetMenu from '@/app/components/sheet'
+import Header from "@/app/components/sheet";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,11 +18,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="bg-[#141414] text-[#dbd9d9] max-w-[1500px] mx-auto p-5 border-[2px] border-[#6EEB83] shadow-[#6EEB83] shadow-inner rounded-sm ">
-          <SheetMenu/>
+        <div className="max-w-[1500px] mx-auto p-5 border-[3px] border-primary shadow-primary shadow-inner rounded-sm ">
+          <Header/>
           {children}
         </div>
       </body>
     </html>
   );
 }
+
+
+
+{/* <div className="bg-[#141414] text-[#dbd9d9] max-w-[1500px] mx-auto p-5 border-[2px] border-[#6EEB83] shadow-[#6EEB83] shadow-inner rounded-sm "> */}
