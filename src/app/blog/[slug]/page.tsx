@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
 import { PortableText } from '@portabletext/react'
@@ -27,7 +27,7 @@ const Blog = ({ params: { slug } }: { params: { slug: string } }) => {
   const [comments, setComments] = useState<Comment[]>([])
   const [showCommentSection, setShowCommentSection] = useState<boolean>(false)
 
-  useState(() => {
+  useEffect(() => {
     const fetchPost = async () => {
       const query = `*[_type == "post" && slug.current == "${slug}"]{
         title, image, summary, author, date, content
@@ -38,7 +38,7 @@ const Blog = ({ params: { slug } }: { params: { slug: string } }) => {
     }
 
     fetchPost()
-  })
+  }, [slug])
 
   // Handle comment submission
   const handleCommentSubmit = () => {
@@ -90,7 +90,7 @@ const Blog = ({ params: { slug } }: { params: { slug: string } }) => {
         className='fixed bottom-5 right-5 bg-secondary hover:bg-primary px-3 py-2 rounded-es-full'
       >
         {showCommentSection}
-        Comment
+        Comments
       </button>
 
       {/* Show Comment Section if toggled */}
@@ -108,7 +108,7 @@ const Blog = ({ params: { slug } }: { params: { slug: string } }) => {
             ></textarea>
             <button
               onClick={handleCommentSubmit}
-              className='mt-2 bg-primary text-white p-2 rounded-lg'
+              className='mt-2 bg-secondary hover:bg-primary text-white p-2 rounded-lg'
             >
               Submit Comment
             </button>

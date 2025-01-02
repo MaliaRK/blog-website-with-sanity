@@ -19,7 +19,7 @@ const BlogCard = (props: Post) => {
   }, [])
 
   return (
-    <div className='border-[4px] border-primary shadow-md shadow-primary max-h-svh hover:scale-105 duration-700 cursor-pointer' data-aos= "zoom-in" data-aos-duration= "2000">
+    <div className='border-[4px] border-primary shadow-md shadow-primary max-h-svh cursor-pointer' data-aos= "zoom-in" data-aos-duration= "2000">
       <div className='max-h-'>{props.image}</div>
       <h3 className='text-center text-[#b0adad] my-2'><strong><u>{props.title}</u></strong></h3>
       <p className='text-center'>{props.summary}</p>
