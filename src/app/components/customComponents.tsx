@@ -2,8 +2,7 @@ import {PortableTextComponents} from '@portabletext/react'
 import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image';
 
-
-export const components: PortableTextComponents = {
+export const Components: PortableTextComponents = {
     block: {
         h5: ({children}) => <h5 className='text-xl font-serif ml-6'>{children}</h5>,
         normal: ({children}) => <p className='mx-10'>{children}</p>

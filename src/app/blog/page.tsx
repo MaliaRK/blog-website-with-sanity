@@ -24,8 +24,8 @@ const Home = async () => {
 
     return (
         <div>
-            <h1 className='font-serif mx-auto text-2xl text-center block md:hidden'><strong><u>Unleash Your Voice Through Blogging</u></strong></h1>
-            <p className='mt-[80px] md:mt-[100px]'>In this space, I&apos;ll be discussing a variety of IT-related topics, where we can
+            <h1 className='font-serif mx-auto mt-[70px] text-2xl text-center block md:hidden'><strong><u>Unleash Your Voice Through Blogging</u></strong></h1>
+            <p className='mt-[20px] md:mt-[100px]'>In this space, I&apos;ll be discussing a variety of IT-related topics, where we can
                 interact with individuals and groups alike. The blog will focus on sharing
                 knowledge-based content, including the latest updates in technology. My goal is to
                 keep us connected in the ever-evolving tech world and create a community
@@ -52,7 +52,6 @@ const Home = async () => {
 
 // Generate Static Params
 export async function generateStaticParams() {
-    // Fetch all blog slugs to generate paths for each
     const query = `
     *[_type == "post"] {
         "slug": slug.current, image, title, summary, content, author, date

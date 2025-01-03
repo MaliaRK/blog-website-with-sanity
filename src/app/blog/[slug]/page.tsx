@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
 import { PortableText } from '@portabletext/react'
-import { components } from '@/app/components/customComponents'
+import { Components } from '@/app/components/customComponents'
 import { client } from '@/sanity/lib/client'
 
 interface Post {
@@ -47,7 +47,7 @@ const Blog = ({ params: { slug } }: { params: { slug: string } }) => {
         ...comments,
         { id: comments.length + 1, text: comment.trim() },
       ])
-      setComment('') // Clear the comment input after submission
+      setComment('') 
     }
   }
 
@@ -56,8 +56,9 @@ const Blog = ({ params: { slug } }: { params: { slug: string } }) => {
     setShowCommentSection(!showCommentSection)
   }
 
+  // Loading state while fetching post data
   if (!post) {
-    return <div className='my-[40%]'>Loading...</div> // Loading state while fetching post data
+    return <div className='my-[40%] h-screen'>Loading...</div>
   }
 
   return (
@@ -83,11 +84,11 @@ const Blog = ({ params: { slug } }: { params: { slug: string } }) => {
         </div>
       </div>
 
-      <PortableText value={post.content} components={components} />
+      <PortableText value={post.content} components={Components} />
 
       <button
         onClick={toggleCommentSection}
-        className='fixed bottom-5 right-5 bg-secondary hover:bg-primary px-3 py-2 rounded-es-full'
+        className='fixed bottom-2 right-2 bg-secondary hover:bg-primary px-3 py-2 rounded-es-full'
       >
         {showCommentSection}
         Comments
@@ -95,8 +96,7 @@ const Blog = ({ params: { slug } }: { params: { slug: string } }) => {
 
       {/* Show Comment Section if toggled */}
       {showCommentSection && (
-        <div className='mt-8'>
-          <h3 className='text-xl mb-4'>Comments</h3>
+        <div className='fixed bottom-14 right-3 left-32 md:left-[75%] p-2 bg-secondary rounded-lg'>
 
           {/* Comment Input */}
           <div className='mb-4'>
@@ -104,19 +104,21 @@ const Blog = ({ params: { slug } }: { params: { slug: string } }) => {
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder='Write your comment...'
-              className='w-full p-2 border rounded-lg'
+              className='w-full p-2 border-[1px] border-secondary outline-none rounded-lg'
             ></textarea>
-            <button
-              onClick={handleCommentSubmit}
-              className='mt-2 bg-secondary hover:bg-primary text-white p-2 rounded-lg'
-            >
-              Submit Comment
-            </button>
+            <div>
+              <button
+                onClick={handleCommentSubmit}
+                className='mt-2 border-[2px] border-purple-500 bg-purple-500 text-white px-8 py-1 rounded-full'
+              >
+                Submit
+              </button>
+              <Image src='/send.svg' alt='send' width={40} height={40} />
+            </div>
           </div>
 
           {/* List of Comments */}
           <div>
-            {comments.length === 0 && <p>No comments yet...</p>}
             {comments.map((comment) => (
               <div key={comment.id} className='mb-4'>
                 <p>{comment.text}</p>
